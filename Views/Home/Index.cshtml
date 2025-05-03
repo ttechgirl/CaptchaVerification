@@ -1,0 +1,49 @@
+﻿@inject CaptchaSettings settings
+ @model ForgotPasswordModel 
+
+<div class="text-center"> 
+     <h1 class="display-4">Welcome</h1> 
+    <p>ARTICLE REFERENCE <a href="https://blog.elmah.io/adding-captcha-on-form-posts-with-asp-net-core/" target="_blank"> Here</a></p>
+ </div>
+
+<div id="reCaptcha" >
+    <h2>Enter your email.</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post" asp-action="ForgotPassword" asp-controller="Home">
+                <partial name="_ForgotPasswordPartial" />
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+ @section Scripts{
+    <script>
+
+        function renderReCaptcha() {
+            if (typeof grecaptcha !== 'undefined') {
+                grecaptcha.render('reCaptcha', {
+                    sitekey: '@settings.SiteKey'
+
+                });
+
+            } else {
+                console.error("reCAPTCHA API not loaded.");
+            }
+        }
+
+        // Run when the API finishes loading
+         window.onRecaptchaLoadCallback = function () {
+            renderReCaptcha();
+        };
+        
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+ }
+
+
+
