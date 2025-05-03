@@ -5,5 +5,8 @@ Used google recaptcha on a simple mvc project .
 https://blog.elmah.io/adding-captcha-on-form-posts-with-asp-net-core/
 
 # Note
-There are a few differences from what was done in the article.
+- There are a few differences from what was done in the article.
+- Check master branch for updated code
+  
+
 
