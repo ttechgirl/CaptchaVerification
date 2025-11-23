@@ -20,7 +20,8 @@ builder.Services.AddScoped<CaptchaService>();
 var captchaModel = new CaptchaSettings();
 builder.Configuration.Bind("CaptchaSettings", captchaModel);
 builder.Services.AddSingleton(captchaModel);
-var baseUrl = builder.Configuration.GetValue<string>("CaptchaSettings:BaseAddress");
+var baseUrl = captchaModel.BaseAddress ?? "";
+//var baseUrl = builder.Configuration.GetValue<string>("CaptchaSettings:BaseAddress");
 
 builder.Services.AddHttpClient<CaptchaService>(x =>
 {
